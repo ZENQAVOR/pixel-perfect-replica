@@ -6,8 +6,8 @@ export const siteButton = cva(
   {
     variants: {
       variant: {
-        primary: "bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-glow",
-        ghost: "border border-input bg-surface/40 text-foreground backdrop-blur hover:border-violet/60 hover:bg-surface-2",
+        primary: "button-silver bg-primary text-primary-foreground hover:-translate-y-0.5 hover:shadow-glow",
+        ghost: "border border-input bg-surface/40 text-foreground backdrop-blur hover:border-steel/60 hover:bg-surface-2",
         link: "min-h-0 px-0 text-steel hover:text-foreground",
       },
     },

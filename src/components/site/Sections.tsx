@@ -13,7 +13,6 @@ export function HeroSection() {
   return (
     <section id={sectionIds.home} aria-labelledby="hero-title" className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       <div className="absolute inset-0 -z-10 bg-hero" aria-hidden="true" />
-      <div className="absolute inset-0 -z-10 grid-lines" aria-hidden="true" />
       <div className="container-site grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="order-2 lg:order-1">
           <p className="eyebrow animate-rise">{t.hero.eyebrow}</p>
@@ -26,12 +25,11 @@ export function HeroSection() {
             <Link to="/" hash={sectionIds.contact} className={buttonCls("ghost")}>{t.hero.secondary}</Link>
           </div>
         </div>
-        <div className="relative order-1 mx-auto w-full max-w-[15rem] sm:max-w-xs lg:order-2 lg:max-w-md" aria-hidden="true">
-          <div className="absolute inset-[12%] rounded-full bg-violet/20 blur-3xl" />
-          <ZSymbol glow className="relative w-full animate-float drop-shadow-[0_30px_40px_oklch(0_0_0/0.6)]" />
+        <div className="relative order-1 mx-auto w-full max-w-[22rem] sm:max-w-md lg:order-2 lg:max-w-xl" aria-hidden="true">
+          <ZSymbol artwork className="relative w-full animate-float" />
           <div className="mt-6 flex flex-col items-center gap-2 text-center">
             <Wordmark className="text-lg text-steel md:text-xl" />
-            <span className="text-[0.7rem] tracking-[0.4em] text-muted-foreground">{t.hero.tagline}</span>
+            <span className="text-[0.7rem] text-muted-foreground">{t.hero.tagline}</span>
           </div>
         </div>
       </div>
@@ -47,13 +45,13 @@ export function ServicesSection() {
     <section id={sectionIds.services} aria-labelledby="services-title" className="border-t border-border py-24 md:py-32">
       <div className="container-site">
         <SectionHeading id="services-title" eyebrow={t.services.eyebrow} title={t.services.title} intro={t.services.intro} />
-        <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
+        <ul className="mt-14 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2">
           {t.services.items.map((s, i) => {
             const Icon = serviceIcons[i % serviceIcons.length] ?? Code2;
             return (
               <li key={s.title} className="reveal group flex flex-col bg-surface p-7 transition-colors duration-300 hover:bg-surface-2 md:p-10">
                 <div className="flex items-center justify-between">
-                  <Icon className="h-6 w-6 text-steel transition-colors group-hover:text-violet" aria-hidden="true" />
+                  <Icon className="h-6 w-6 text-steel transition-colors group-hover:text-foreground" aria-hidden="true" />
                   <span className="font-display text-sm text-muted-foreground">0{i + 1}</span>
                 </div>
                 <h3 className="mt-8 text-xl font-semibold md:text-2xl">{s.title}</h3>
@@ -86,7 +84,7 @@ function ProjectMockup({ variant }: { variant: number }) {
       <div className="flex h-full flex-col items-center justify-center gap-3 p-5 text-center">
         <div className="font-display text-4xl font-bold tracking-tight text-foreground/90">PULSO</div>
         <div className="h-2 w-40 rounded bg-muted-foreground/30" />
-        <div className="mt-2 h-7 w-28 rounded-full bg-violet/80" />
+        <div className="mt-2 h-7 w-28 rounded-full bg-steel/80" />
         <div className="mt-4 grid w-full grid-cols-3 gap-2">{[0, 1, 2].map((n) => <div key={n} className="h-12 rounded-md border border-border bg-surface-2" />)}</div>
       </div>
     );
@@ -94,7 +92,7 @@ function ProjectMockup({ variant }: { variant: number }) {
     <div className="grid h-full grid-cols-[0.35fr_1fr] gap-3 p-5">
       <div className="flex flex-col gap-2 rounded-md bg-surface-2 p-3">{[0, 1, 2, 3].map((n) => <div key={n} className="h-2 rounded bg-muted-foreground/30" />)}</div>
       <div className="grid grid-cols-2 gap-3">
-        <div className="col-span-2 rounded-md bg-gradient-to-r from-violet/30 to-steel/20" />
+        <div className="col-span-2 rounded-md bg-gradient-to-r from-steel/30 to-steel/10" />
         <div className="rounded-md border border-border bg-surface-2" /><div className="rounded-md border border-border bg-surface-2" />
       </div>
     </div>
@@ -110,13 +108,13 @@ export function ProjectsSection() {
         <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {t.projects.items.map((p, i) => (
             <li key={p.title} className={"reveal" + (i === 2 ? " md:col-span-2 lg:col-span-1" : "")}>
-              <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-card">
+              <article className="project-card flex h-full flex-col overflow-hidden rounded-lg border border-border bg-surface shadow-card">
                 <div className="relative aspect-[4/3] border-b border-border bg-background" role="img" aria-label={`${p.title} — ${t.projects.badge}`}>
                   <ProjectMockup variant={i} />
                   <span className="absolute left-4 top-4 rounded-full border border-input bg-background/80 px-3 py-1 text-[0.7rem] font-semibold tracking-wide text-steel backdrop-blur">{t.projects.badge}</span>
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">{p.category}</p>
+                  <p className="text-xs font-semibold uppercase text-muted-foreground">{p.category}</p>
                   <h3 className="mt-2 text-2xl font-semibold">{p.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground"><span className="font-semibold text-steel">{t.projects.objective}: </span>{p.objective}</p>
                 </div>
@@ -161,7 +159,7 @@ export function AboutSection() {
         <ul className="grid gap-6">
           {t.about.values.map((v) => (
             <li key={v.title} className="reveal flex gap-4">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-violet" aria-hidden="true" />
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rotate-45 bg-steel" aria-hidden="true" />
               <div><h3 className="font-semibold">{v.title}</h3><p className="text-sm text-muted-foreground">{v.text}</p></div>
             </li>
           ))}
@@ -194,7 +192,7 @@ export function ContactSection() {
       <div className="absolute inset-0 -z-10 bg-hero opacity-70" aria-hidden="true" />
       <div className="container-site grid gap-12 lg:grid-cols-2 lg:items-center">
         <SectionHeading id="contact-title" eyebrow={t.contact.eyebrow} title={t.contact.title} intro={t.contact.text} />
-        <div className="reveal flex flex-col gap-3 rounded-2xl border border-border bg-surface/70 p-6 shadow-card backdrop-blur md:p-8">
+        <div className="reveal flex flex-col gap-3 border-t border-input pt-6 md:pt-8">
           <ContactAction href={whatsappHref} icon={<MessageCircle className="h-4 w-4" aria-hidden="true" />} label={t.contact.whatsapp} unavailable={t.contact.unavailable} />
           <ContactAction href={emailHref} icon={<Mail className="h-4 w-4" aria-hidden="true" />} label={t.contact.email} unavailable={t.contact.unavailable} />
           {missing && import.meta.env.DEV && <p className="mt-2 text-xs text-muted-foreground">{t.contact.devNote}</p>}
