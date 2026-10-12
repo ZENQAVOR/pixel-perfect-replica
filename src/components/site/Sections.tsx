@@ -49,7 +49,7 @@ export function ServicesSection() {
         <SectionHeading id="services-title" eyebrow={t.services.eyebrow} title={t.services.title} intro={t.services.intro} />
         <ul className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2">
           {t.services.items.map((s, i) => {
-            const Icon = serviceIcons[i];
+            const Icon = serviceIcons[i % serviceIcons.length] ?? Code2;
             return (
               <li key={s.title} className="reveal group flex flex-col bg-surface p-7 transition-colors duration-300 hover:bg-surface-2 md:p-10">
                 <div className="flex items-center justify-between">
