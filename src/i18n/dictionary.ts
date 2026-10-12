@@ -33,9 +33,9 @@ const es = {
     badge: "Demo conceptual",
     objective: "Objetivo",
     items: [
-      { title: "Atelier Norte", category: "Negocio de servicios local", objective: "Transmitir confianza y calidad premium, facilitando la reserva de una consulta." },
-      { title: "Pulso", category: "Landing de fitness y estilo de vida", objective: "Comunicar energía con una estructura simple que guía hacia la inscripción." },
-      { title: "Lumen Kit", category: "Producto digital / marca creativa", objective: "Presentar un producto digital con claridad, ritmo visual y foco en el valor." },
+      { title: "Brasa lenta", category: "Concepto gastronómico", objective: "Construir una atmósfera cálida y facilitar la reserva de una mesa." },
+      { title: "Norte estudio", category: "Concepto de arquitectura", objective: "Transmitir precisión, materialidad y confianza para presentar un proyecto." },
+      { title: "Vector systems", category: "Concepto tecnológico", objective: "Explicar servicios digitales complejos con claridad y una identidad precisa." },
     ],
   },
   process: {
@@ -123,9 +123,9 @@ const en: Dictionary = {
     badge: "Concept project",
     objective: "Objective",
     items: [
-      { title: "Atelier Norte", category: "Local service business", objective: "Convey trust and premium quality while making it easy to book a consultation." },
-      { title: "Pulso", category: "Fitness & lifestyle landing page", objective: "Communicate energy with a simple structure that guides visitors to sign up." },
-      { title: "Lumen Kit", category: "Digital product / creative brand", objective: "Present a digital product with clarity, visual rhythm, and focus on value." },
+      { title: "Slow fire", category: "Food concept", objective: "Build a warm atmosphere and make it easy to reserve a table." },
+      { title: "North studio", category: "Architecture concept", objective: "Communicate precision, materiality, and trust while presenting a project." },
+      { title: "Vector systems", category: "Technology concept", objective: "Explain complex digital services with clarity and a precise identity." },
     ],
   },
   process: {

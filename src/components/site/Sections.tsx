@@ -11,9 +11,9 @@ import { emailHref, whatsappHref } from "@/config/site";
 export function HeroSection() {
   const { t } = useI18n();
   return (
-    <section id={sectionIds.home} aria-labelledby="hero-title" className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
+    <section id={sectionIds.home} aria-labelledby="hero-title" className="relative isolate overflow-hidden pt-24 pb-20 md:pt-32 md:pb-28">
       <div className="absolute inset-0 -z-10 bg-hero" aria-hidden="true" />
-      <div className="container-site grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="container-site grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-6">
         <div className="order-2 lg:order-1">
           <p className="eyebrow animate-rise">{t.hero.eyebrow}</p>
           <h1 id="hero-title" className="mt-5 max-w-[16ch] text-[2.4rem] leading-[1.05] font-semibold text-gradient animate-rise [animation-delay:80ms] sm:text-5xl lg:text-6xl xl:text-7xl">
@@ -25,9 +25,9 @@ export function HeroSection() {
             <Link to="/" hash={sectionIds.contact} className={buttonCls("ghost")}>{t.hero.secondary}</Link>
           </div>
         </div>
-        <div className="relative order-1 mx-auto w-full max-w-[22rem] sm:max-w-md lg:order-2 lg:max-w-xl" aria-hidden="true">
+        <div className="relative order-1 mx-auto w-full max-w-[25rem] sm:max-w-xl lg:order-2 lg:max-w-2xl" aria-hidden="true">
           <ZSymbol artwork className="relative w-full animate-float" />
-          <div className="mt-6 flex flex-col items-center gap-2 text-center">
+          <div className="mt-2 flex flex-col items-center gap-2 text-center">
             <Wordmark className="text-lg text-steel md:text-xl" />
             <span className="text-[0.7rem] text-muted-foreground">{t.hero.tagline}</span>
           </div>
@@ -71,30 +71,25 @@ export function ServicesSection() {
 function ProjectMockup({ variant }: { variant: number }) {
   if (variant === 0)
     return (
-      <div className="flex h-full flex-col gap-3 p-5">
-        <div className="flex justify-between"><div className="h-2 w-14 rounded bg-steel/60" /><div className="flex gap-2">{[0, 1, 2].map((n) => <div key={n} className="h-2 w-6 rounded bg-muted-foreground/30" />)}</div></div>
-        <div className="mt-4 grid flex-1 grid-cols-2 gap-3">
-          <div className="flex flex-col justify-center gap-2"><div className="h-3 w-full rounded bg-foreground/80" /><div className="h-3 w-3/4 rounded bg-foreground/80" /><div className="mt-2 h-2 w-full rounded bg-muted-foreground/30" /><div className="mt-3 h-6 w-20 rounded-full bg-steel/70" /></div>
-          <div className="rounded-lg bg-gradient-to-br from-steel/30 to-surface" />
-        </div>
+      <div className="concept concept-food flex h-full flex-col justify-between p-5 sm:p-7">
+        <div className="flex items-center justify-between text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#f5e5c8]/70"><span>Casa / mesa</span><span>01</span></div>
+        <div><p className="font-display text-3xl font-semibold tracking-tight text-[#fff8eb] sm:text-4xl">Brasa<br />lenta.</p><div className="mt-4 h-px w-16 bg-[#d88b52]" /><p className="mt-3 max-w-[13rem] text-xs leading-relaxed text-[#f5e5c8]/70">Cocina de estación, fuego y encuentros.</p></div>
+        <div className="flex items-center justify-between text-xs text-[#f5e5c8]/80"><span>Concepto gastronómico</span><span className="rounded-full border border-[#f5e5c8]/30 px-3 py-1">Reservar</span></div>
       </div>
     );
   if (variant === 1)
     return (
-      <div className="flex h-full flex-col items-center justify-center gap-3 p-5 text-center">
-        <div className="font-display text-4xl font-bold tracking-tight text-foreground/90">PULSO</div>
-        <div className="h-2 w-40 rounded bg-muted-foreground/30" />
-        <div className="mt-2 h-7 w-28 rounded-full bg-steel/80" />
-        <div className="mt-4 grid w-full grid-cols-3 gap-2">{[0, 1, 2].map((n) => <div key={n} className="h-12 rounded-md border border-border bg-surface-2" />)}</div>
+      <div className="concept concept-build flex h-full flex-col justify-between p-5 sm:p-7">
+        <div className="flex items-center justify-between text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#c9d8d2]/65"><span>Materia / espacio</span><span>02</span></div>
+        <div><p className="font-display text-3xl font-semibold tracking-tight text-[#edf4f0] sm:text-4xl">Norte<br /><span className="text-[#9db8aa]">estudio.</span></p><p className="mt-4 max-w-[15rem] text-xs leading-relaxed text-[#c9d8d2]/70">Arquitectura que deja entrar la luz.</p></div>
+        <div className="flex items-center gap-3 text-xs text-[#c9d8d2]/75"><span className="h-2 w-2 rounded-full bg-[#d6a66f]" /> Concepto de arquitectura</div>
       </div>
     );
   return (
-    <div className="grid h-full grid-cols-[0.35fr_1fr] gap-3 p-5">
-      <div className="flex flex-col gap-2 rounded-md bg-surface-2 p-3">{[0, 1, 2, 3].map((n) => <div key={n} className="h-2 rounded bg-muted-foreground/30" />)}</div>
-      <div className="grid grid-cols-2 gap-3">
-        <div className="col-span-2 rounded-md bg-gradient-to-r from-steel/30 to-steel/10" />
-        <div className="rounded-md border border-border bg-surface-2" /><div className="rounded-md border border-border bg-surface-2" />
-      </div>
+    <div className="concept concept-tech flex h-full flex-col justify-between p-5 sm:p-7">
+      <div className="flex items-center justify-between text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[#b9dbd8]/65"><span>Herramientas / futuro</span><span>03</span></div>
+      <div><p className="font-display text-3xl font-semibold tracking-tight text-[#ecffff] sm:text-4xl">Vector<br /><span className="text-[#7bd4ca]">systems.</span></p><p className="mt-4 max-w-[15rem] text-xs leading-relaxed text-[#b9dbd8]/70">Servicios digitales claros para equipos que avanzan.</p></div>
+      <div className="flex items-center justify-between text-xs text-[#b9dbd8]/75"><span>Concepto tecnológico</span><span className="font-display text-[#7bd4ca]">[ explore ]</span></div>
     </div>
   );
 }

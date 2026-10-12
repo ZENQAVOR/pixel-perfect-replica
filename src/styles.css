@@ -136,28 +136,41 @@
   color: var(--steel);
 }
 
-/* Wide artwork retains the reference's geometry; compact placements only trim its outer backdrop. */
-.brand-artwork { aspect-ratio: 825 / 549; }
+/* Both brand placements preserve the source artwork's proportions without cropping. */
+.brand-artwork {
+  aspect-ratio: 832 / 512;
+  isolation: isolate;
+}
 .brand-artwork img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  mask-image: linear-gradient(to right, transparent, var(--foreground) 12%, var(--foreground) 88%, transparent),
-    linear-gradient(to bottom, transparent, var(--foreground) 12%, var(--foreground) 85%, transparent);
-  mask-composite: intersect;
+  object-position: center;
+  mix-blend-mode: screen;
+  mask-image: radial-gradient(ellipse at center, var(--foreground) 58%, transparent 100%);
 }
 .brand-symbol { position: relative; overflow: hidden; }
 .brand-symbol img {
   position: absolute;
-  width: 150%;
-  max-width: none;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  left: -25%;
-  object-fit: cover;
-  mask-image: linear-gradient(transparent, var(--foreground) 14%, var(--foreground) 86%, transparent);
+  object-fit: contain;
+  object-position: center;
 }
-.project-card { transition: border-color var(--duration-base) var(--ease-out); }
-.project-card:hover { border-color: var(--input); }
+.project-card { transition: border-color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out); }
+.project-card:hover { border-color: var(--input); transform: translateY(-4px); }
+.concept { position: relative; overflow: hidden; isolation: isolate; }
+.concept::before,
+.concept::after { content: ""; position: absolute; pointer-events: none; z-index: -1; }
+.concept::before { inset: 18% -18% -28% 42%; border-radius: 50%; filter: blur(26px); opacity: 0.28; }
+.concept::after { inset: 0; background: linear-gradient(135deg, transparent 0 48%, oklch(1 0 0 / 5%) 48.5%, transparent 49%); opacity: 0.35; }
+.concept-food { background: radial-gradient(circle at 72% 26%, #87512e 0, transparent 34%), linear-gradient(135deg, #241916, #0f1110 72%); }
+.concept-food::before { background: #d88b52; }
+.concept-build { background: radial-gradient(circle at 82% 18%, #375549 0, transparent 32%), linear-gradient(135deg, #17211e, #0e1110 72%); }
+.concept-build::before { background: #9db8aa; }
+.concept-tech { background: radial-gradient(circle at 80% 25%, #1b6664 0, transparent 35%), linear-gradient(135deg, #101f22, #0b1012 72%); }
+.concept-tech::before { background: #5ac9c0; }
 @utility reveal {
   @supports (animation-timeline: view()) {
     animation: reveal linear both;

@@ -5,7 +5,14 @@ import zArtwork from "@/assets/zenqavor-z.png.asset.json";
 export function ZSymbol({ className, artwork = false }: { className?: string; artwork?: boolean }) {
   return (
     <span className={cn("block", artwork ? "brand-artwork" : "brand-symbol", className)} aria-hidden="true">
-      <img src={zArtwork.url} alt="" width={825} height={549} decoding="async" fetchPriority={artwork ? "high" : "auto"} />
+      <img
+        src={artwork ? "/assets/zenqavor.png" : zArtwork.url}
+        alt=""
+        width={artwork ? 832 : 825}
+        height={artwork ? 512 : 549}
+        decoding="async"
+        fetchPriority={artwork ? "high" : "auto"}
+      />
     </span>
   );
 }
